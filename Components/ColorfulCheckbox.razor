@@ -1,0 +1,24 @@
+﻿<label style="font-size:@(Size)px;color:@Color">
+    <input @bind="Value"
+           id="survey"
+           name="blazor"
+           type="checkbox" />
+    Enjoying Blazor?
+</label>
+
+@code
+{
+    [Parameter]
+    public bool Value { get; set; }
+
+    [Parameter]
+    public int Size { get; set; } = 8;
+
+    [Parameter]
+    public string? Color { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Size += 10;
+    }
+}

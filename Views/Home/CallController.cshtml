@@ -1,0 +1,12 @@
+﻿@using Blazor_in_mvc.Components
+
+@{
+    ViewData["Title"] = "Call Controller";
+}
+
+
+<div class="text-center">
+    <h1 class="display-5">Call Controller</h1>
+</div>
+
+<component type="typeof(CallController)" render-mode="ServerPrerendered" param-Id="3" />

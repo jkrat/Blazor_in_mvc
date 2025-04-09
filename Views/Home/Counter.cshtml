@@ -1,0 +1,12 @@
+﻿@using Blazor_in_mvc.Components
+
+@model CounterModel
+@{
+    ViewData["Title"] = "Counter";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Counter</h1>
+</div>
+
+<component type="typeof(InteractiveCounter)" render-mode="ServerPrerendered" param-InitialValue="@Model.StartValue" />

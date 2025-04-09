@@ -1,0 +1,40 @@
+﻿@using Blazor_in_mvc.Models
+@using Blazor_in_mvc.Services
+
+@inject ITestService TestService
+
+<div class="d-flex align-items-center pb-5">
+    <div class="me-2">
+        <label for="vehicleId">Enter Vehicle Id:</label>
+        <input id="vehicleId" type="number" @bind="Id" class="form-control" />
+    </div>
+    <button class="btn btn-primary mt-4" @onclick="FetchVehicleData">Get Data</button>
+</div>
+
+<h4>Vehicle</h4>
+@if (vehicle == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <p>Id: @vehicle?.Id</p>
+    <p>Name: @vehicle?.Name</p>
+    <p>Status: @vehicle?.Status</p>
+    <p>Mileage: @vehicle?.Mileage</p>
+}
+
+@code
+{
+    private int? Id;
+    private VehicleViewModel? vehicle { get; set; }
+
+    private void FetchVehicleData()
+    {
+        if (Id.HasValue)
+        {
+            vehicle = TestService.GetData(Id.Value);
+        }
+    }
+
+}

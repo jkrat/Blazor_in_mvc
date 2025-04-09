@@ -1,0 +1,34 @@
+﻿@using Blazor_in_mvc.Models
+@using Blazor_in_mvc.Services
+
+@inject HttpClient Http
+
+<h4>Vehicle</h4>
+@if (vehicle == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <p>Id: @vehicle?.Id</p>
+    <p>Name: @vehicle?.Name</p>
+    <p>Status: @vehicle?.Status</p>
+    <p>Mileage: @vehicle?.Mileage</p>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private VehicleViewModel? vehicle { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await FetchVehicleData();
+    }
+
+    private async Task FetchVehicleData()
+    {
+        vehicle = await Http.GetFromJsonAsync<VehicleViewModel>($"api/GetData/{Id}");
+    }
+
+}

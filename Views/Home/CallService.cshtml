@@ -1,0 +1,11 @@
+﻿@using Blazor_in_mvc.Components
+
+@{
+    ViewData["Title"] = "Call Service";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Call Service</h1>
+</div>
+
+<component type="typeof(CallService)" render-mode="ServerPrerendered" />
